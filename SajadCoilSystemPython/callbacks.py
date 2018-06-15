@@ -189,7 +189,7 @@ class GUI(QMainWindow,Ui_MainWindow):
         field.setField([fieldX,fieldY,fieldZ,0,0,0,0,0])
 
     def clearField(self):
-        field.setField([0,0,0,0,0,0,0,0])
+        # Set all GUI fields to zero then clear the coil currents
         self.dsb_x.setValue(0)
         self.dsb_y.setValue(0)
         self.dsb_z.setValue(0)
@@ -201,7 +201,8 @@ class GUI(QMainWindow,Ui_MainWindow):
         self.dsb_mag.setValue(0)
         self.dsb_azimuth.setValue(0)
         self.dsb_polar.setValue(0)
-
+        field.clearField()
+        
     # vision tab
     def on_chb_bypassFilters(self,state):
         vision.setStateFiltersBypassed(state)
