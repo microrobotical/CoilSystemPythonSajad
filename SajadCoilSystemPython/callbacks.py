@@ -178,7 +178,7 @@ class GUI(QMainWindow,Ui_MainWindow):
             ])
 
     def setFieldByAngle(self):
-        ''' Angle Mode. No gradient. '''
+        ''' Spherical coordinate Mode. No gradient. '''
         magnitude = self.dsb_mag.value()
         azimuth = self.dsb_azimuth.value()
         polar = self.dsb_polar.value()
@@ -189,7 +189,7 @@ class GUI(QMainWindow,Ui_MainWindow):
         field.setField([fieldX,fieldY,fieldZ,0,0,0,0,0])
 
     def clearField(self):
-        field.setField([0,0,0,0,0,0,0,0])
+        # Clear all GUI field values and clear the field outputs (i.e. currents)
         self.dsb_x.setValue(0)
         self.dsb_y.setValue(0)
         self.dsb_z.setValue(0)
@@ -201,6 +201,7 @@ class GUI(QMainWindow,Ui_MainWindow):
         self.dsb_mag.setValue(0)
         self.dsb_azimuth.setValue(0)
         self.dsb_polar.setValue(0)
+        field.clearField        
 
     # vision tab
     def on_chb_bypassFilters(self,state):
